@@ -18,14 +18,48 @@ public class Test2 {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("주민등록번호를 입력하세요 : ");
 		String idNum = sc.nextLine();
-		String str = idNum.substring(0, 6);
-		str = str + idNum.substring(7, 14);
-		System.out.println(str);
-		for (int i = 0; i < str.length(); i++) {
-			
-			
+		String num = idNum.substring(0, 6);
+		num = num + idNum.substring(7, 14);
+		idNum = num;
+		int sum = 0;
+		int idx = 2;
+		// String idNum = sc.nextLine();
+
+		// 1.split
+		String[] idNums = idNum.split("");
+
+		// 2.substring
+		for (int i = 0; i < idNum.length()-1; i++) {
+			String n1 = idNum.substring(i, i + 1);
+			int n = Integer.parseInt(n1);
+			// System.out.println(n1);
+		}
+
+		// 3.charAt
+		for (int i = 0; i < idNum.length()-1; i++) {
+			char ch = idNum.charAt(i);
+			String n1 = String.valueOf(ch);
+
+			int n = Integer.parseInt(n1);
+			sum = sum + n * idx;
+			idx++;
+			if (idx == 10)
+				idx = 2;
 
 		}
+		sum = sum % 11;
+		if (sum <= 10)
+			sum = sum % 10;
+		
+		sum = 11 - sum;
+		
+		int result = Integer.parseInt(String.valueOf(idNum.charAt(idNum.length()-1)));
+		
+		if(sum == result)
+			System.out.println("맞는 번호");
+		else 
+			System.out.println("틀린 번호");
+		
 
 	}
 
